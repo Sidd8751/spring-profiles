@@ -5,7 +5,7 @@ import org.springframework.stereotype.Service;
 
 @Service
 @Profile("dev")
-public class DevService implements HelloService {
+public class DevService extends AbstractHelloService {
 
     @Override public String sayHello() {
         return this.getClass().getSimpleName() + HELLO_MESSAGE;

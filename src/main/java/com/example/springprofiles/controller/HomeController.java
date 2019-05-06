@@ -2,6 +2,7 @@ package com.example.springprofiles.controller;
 
 import com.example.springprofiles.service.goodbye.GoodbyeService;
 import com.example.springprofiles.service.hello.HelloService;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -11,6 +12,7 @@ public class HomeController {
     private HelloService helloService;
     private GoodbyeService goodbyeService;
 
+    // Add @Qualifier("groovy") to the goodbye service to activate the other service
     public HomeController(HelloService helloService, GoodbyeService goodbyeService) {
         this.helloService = helloService;
         this.goodbyeService = goodbyeService;
@@ -18,11 +20,11 @@ public class HomeController {
 
     @RequestMapping("/hello")
     public String sayHello() {
-        return this.helloService.sayHello();
+        return helloService.sayHello();
     }
 
     @RequestMapping("/goodbye")
     public String sayGoodbye() {
-        return this.goodbyeService.sayGoodbye();
+        return goodbyeService.sayGoodbye();
     }
 }

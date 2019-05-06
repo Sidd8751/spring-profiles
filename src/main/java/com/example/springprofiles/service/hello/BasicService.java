@@ -5,7 +5,7 @@ import org.springframework.stereotype.Service;
 
 @Service
 @Profile("default")
-public class BasicService implements HelloService {
+public class BasicService extends AbstractHelloService {
 
     @Override
     public String sayHello() {

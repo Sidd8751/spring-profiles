@@ -8,8 +8,6 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Profile;
 
-import javax.sql.DataSource;
-
 @Configuration
 @EnableConfigurationProperties(DatabaseConfiguration.class)
 @ConfigurationProperties("spring.datasource")
@@ -57,6 +55,15 @@ public class DatabaseConfiguration {
     /*
     Normally these methods would return a DataSource object
      */
+    @Profile("default")
+    @Bean
+    public String defaultDatabaseConnection() {
+        logger.info("DB connection for DEFAULT - H2");
+        logger.info(driverClassName);
+        logger.info(url);
+        return "DB connection for DEFAULT - H2";
+    }
+
     @Profile("dev")
     @Bean
     public String devDatabaseConnection() {
