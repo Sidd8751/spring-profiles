@@ -1,9 +1,15 @@
 pipeline {
     agent any
+
+    environment {
+        DISABLE_AUTH = 'true'
+        DB_ENGINE    = 'sqlite'
+    }
+
     stages {
-        stage('build') {
+        stage('Build') {
             steps {
-                 bat './gradlew clean test --no-daemon' //run a gradle task
+                sh 'printenv'
             }
         }
     }
