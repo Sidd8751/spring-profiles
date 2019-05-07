@@ -1,11 +1,10 @@
-stage 'build_Project'
-node{
-  if(isUnix()){
-  sh 'gradle build --info'
-
-  }
-  else{
-    bat 'gradle build --info'
-  }
+pipeline {
+    agent any
+    stages {
+        stage('build') {
+            steps {
+                 sh './gradlew clean test --no-daemon' //run a gradle task
+            }
+        }
+    }
 }
-
