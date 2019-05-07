@@ -3,7 +3,7 @@ pipeline {
     stages {
         stage('Gradle build') {
            if (isUnix()) {
-            sh "./gradlew clean build"
+            sh './gradlew clean build'
             } else {
             bat 'gradlew.bat clean build'
         }
